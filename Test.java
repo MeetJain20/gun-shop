@@ -97,10 +97,10 @@ public class Test {
 		
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
 		System.out.println("Welcome to Lock-N-Loaded !");
 	    frontPage();
-	    System.out.println("Rock and Roll Baby");
+	    System.out.println("Rock-N-Roll Baby");
 	    
 	}
 }
