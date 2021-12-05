@@ -162,7 +162,7 @@ public class Test {
 	               
 	               else if (answer==3){
 	            	   
-	            	   System.out.printf("Verfiy Yourself as Admin : ");
+	            	   System.out.println("Verfiy Yourself as Admin : ");
 	            	   System.out.printf("Please Enter UserId : ");
 	            	   
 	            	   String userId= scan.nextLine();
