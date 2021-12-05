@@ -29,7 +29,7 @@ public class Login {
 	              System.out.println("ENTER YOUR PASSWORD -");
 		    	  String Password = scan.nextLine();
 		    	  
-		    	  String sql = "SELECT Pass FROM user where Id="+idv+"";
+		    	  String sql = "SELECT password FROM user where custId="+idv+"";
 		    	  try (ResultSet rs = stmt.executeQuery(sql)) {
                       
                       while(rs.next()){
