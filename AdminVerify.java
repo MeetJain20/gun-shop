@@ -1,8 +1,8 @@
 
 public class AdminVerify {
 	
-	private int UserId=111;
-	private String password="password";
+	private int UserId=6969;
+	private String password="admin";
 	
 	public int getUserId() {
 		return UserId;
