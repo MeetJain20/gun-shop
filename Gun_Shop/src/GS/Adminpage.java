@@ -270,7 +270,7 @@ public class Adminpage {
 		     // System.out.println("Connected database successfully...");
 		      
 		      //STEP 3: Execute a query
-		      System.out.printf("Creating statement...\n");
+		     // System.out.printf("Creating statement...\n");
 		      stmt = conn.createStatement();
 		      
 		      boolean querying = true;
