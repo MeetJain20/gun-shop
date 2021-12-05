@@ -3,6 +3,7 @@ package GS;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -62,7 +63,7 @@ public class Adminpage {
 		               {
 		                   //User entered incorrect input
 		                   System.out.println("Incorrect Input!");
-		                   System.out.println("Please enter a number 1-6");
+		                   System.out.println("Please enter a number 1-5");
 		               }
 		               
 		               else if (answer==1)
@@ -71,9 +72,14 @@ public class Adminpage {
 		                   String Details = "";
 		                   Integer Price = 0;
 		                   Integer Avail = 0;
-		 		    	   System.out.println("Enter Model No");
+		 		    	   System.out.println("Enter FireArm Name");
 		 		    	   Model = scan.nextLine();
-		 		    	  
+		 		    	   String sql1 = "SELECT Gunmodel FROM model WHERE LOWER(Gunmodel) = '"+Model+"'";
+		                   ResultSet rs = stmt.executeQuery(sql1);
+		                   if(rs.next()) {
+		                	   System.out.println("FireArm Already exists in Database!");
+		                   }
+		                   else {
 		 		    	   System.out.println("Enter Details");
 		 		    	   Details = scan.nextLine();
 		 		    	  
@@ -99,12 +105,11 @@ public class Adminpage {
 			               }
 		 		    	   
 		 		    	   String sql = "INSERT INTO model VALUES " + "( '"+ Model + "' , " + "'" + Details + "', " + "" + Price + ", " + "" + Avail + ")";
-				    	   try{stmt.execute(sql);
-				    	   System.out.println("Success!");}catch(SQLException e) {
-				    		   System.out.println("FireArm Model already exists");
+		 		    	   stmt.execute(sql);
+				    	   System.out.println("Success!");
 				    	   }
-				    	   
-		               }
+		               	}   
+		               
 		               
 		               else if (answer==2)
 		               {	String in;
@@ -113,6 +118,12 @@ public class Adminpage {
 		                 
 		 		    	   System.out.println("Enter FireArm Model");
 		 		    	   Model = scan.nextLine();
+		 		    	  String sql1 = "SELECT Gunmodel FROM model WHERE LOWER(Gunmodel) = '"+Model+"'";
+		                   ResultSet rs = stmt.executeQuery(sql1);
+		                   if(!rs.next()) {
+		                	   System.out.println("Wrong FireArm Model");
+		                   }
+		                   else {
 		 		    	  
 		 		    	   System.out.println("Enter New Price");
 		 		    	   in = scan.nextLine();
@@ -125,15 +136,11 @@ public class Adminpage {
 				               }
 		 		    	  
 		 		    	  
-		 		    	   String sql1 = "UPDATE model SET price = ? where Gunmodel=?";
+		 		    	  sql1 = "UPDATE model SET price = '"+Price+"' where Gunmodel= '"+Model+"'";
 	                	   PreparedStatement stmt1 = conn.prepareStatement(sql1);
-	                	   stmt1.setInt(1, Price);
-	                	   stmt1.setString(2, Model);
-	                	   try{stmt1.executeUpdate(sql1);
-				    	   System.out.println("Success!");}catch(SQLException e) {
-				    		   e.printStackTrace();
-				    		   System.out.println("FireArm Model already exists");
-				    	   }
+	                	   stmt1.executeUpdate(sql1);
+				    	   System.out.println("Success!");
+	                	   }
 		               }
 		               
 		               else if (answer==3)
@@ -142,8 +149,13 @@ public class Adminpage {
 		                   Integer Avail = 0;
 		                 
 		 		    	   System.out.println("Enter FireArm model");
-		 		    	   Model = scan.nextLine();
-		 		    	  
+		 		    	   Model = scan.nextLine(); 
+		 		    	   String sql1 = "SELECT Gunmodel FROM model WHERE LOWER(Gunmodel) = '"+Model+"'";
+		                   ResultSet rs = stmt.executeQuery(sql1);
+		                   if(!rs.next()) {
+		                	   System.out.println("Wrong FireArm Model");
+		                   }
+		                   else {
 		 		    	   System.out.println("Enter New Availability");
 		 		    	   String in = scan.nextLine();
 		 		    	   	try{
@@ -154,13 +166,12 @@ public class Adminpage {
 				            	   System.out.println("Availability should be in numbers!");
 				               }
 		 		    	 
-		 		    	   String sql1 = "UPDATE model SET availability = '"+Avail+"' where Gunmodel= '"+Model+"'";
+		 		    	   sql1 = "UPDATE model SET availability = '"+Avail+"' where Gunmodel= '"+Model+"'";
 	                	   PreparedStatement stmt1 = conn.prepareStatement(sql1);
-	                	   boolean x =stmt1.execute(sql1);
-	                	   if(x)
+	                	   stmt1.execute(sql1);
 				    	   System.out.println("Success!");
-	                	   else
-	                	   System.out.println("Wrong Model Name");
+		                   }
+		                   rs.close();
 		               }
 		               
 		               else if (answer==4)
@@ -168,15 +179,21 @@ public class Adminpage {
 		            	   String Model = "";  
 		                   
 		                 
-		 		    	   System.out.println("Enter Model No");
+		 		    	   System.out.println("Enter FireArm Name");
 		 		    	   Model = scan.nextLine();
-		 		    	   String sqlDel = "DELETE FROM model WHERE LOWER(Title) LIKE LOWER('%" + Model + "%')";
+		 		    	   String sql1 = "SELECT Gunmodel FROM model WHERE LOWER(Gunmodel) = '"+Model+"'";
+		                   ResultSet rs = stmt.executeQuery(sql1);
+		                   if(!rs.next()) {
+		                	   System.out.println("Wrong FireArm Model");
+		                   }
+		                   else {   
+		 		    	   String sqlDel = "DELETE FROM model WHERE LOWER(Gunmodel) = LOWER('" + Model + "')";
 	                       
 	                       //Execute the sql
-	                       stmt.execute(sqlDel);
+	                       stmt.executeUpdate(sqlDel);
 	                       
 	                       System.out.println("Model deleted!");
-				    	   
+		                   }   
 		               }
 		               
 		               else if (answer==5)
