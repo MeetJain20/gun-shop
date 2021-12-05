@@ -174,7 +174,7 @@ public class Test {
 		               {
 		            	   val=-1;
 		               }
-	            	   System.out.printf("Please Enter Password\n");
+	            	   System.out.printf("Please Enter Password : ");
 	            	   String pass = scan.nextLine();
 	            	   
 	            	   System.out.printf(pass);
