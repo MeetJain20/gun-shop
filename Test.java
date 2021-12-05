@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Test {
 	
-	public static void f1(){
+	public static void frontPage(){
 		boolean querying = true;
 		try ( //Our input scanner
 	               Scanner scan = new Scanner(System.in)) {
@@ -13,9 +13,9 @@ public class Test {
 	               //Print the menu
 	        	   System.out.println();
 	        	   System.out.println("#################################");
-	               System.out.println("Please select a query below!");
+	               System.out.println("Please Choose the required option");
 	            
-	               System.out.println("1. User Login and Booking");
+	               System.out.println("1. User Login and Shop");
 	               System.out.println("2. User SignUp ");
 	               System.out.println("3. Admin Login");
 	               System.out.println("4. Exit");
@@ -98,9 +98,9 @@ public class Test {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Welcome to the Washing Machine Purchasing Program!");
-	    f1();
-	    System.out.println("Thanku for Visiting");
+		System.out.println("Welcome to Lock-N-Loaded !");
+	    frontPage();
+	    System.out.println("Rock and Roll Baby");
 	    
 	}
 }
