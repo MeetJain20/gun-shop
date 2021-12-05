@@ -130,7 +130,7 @@ public class Test {
 	               System.out.printf("3. Admin Login\n");
 	               System.out.printf("4. Exit\n");
 	               System.out.printf("\n\n- - - -╾━╤デ╦︻ *************************** ︻╦デ╤━╾- - - -\n\n");
-	               System.out.printf("Enter Your Choice\n");
+	               System.out.printf("Enter Your Choice : ");
 	               
 	               String input = scan.nextLine();
 	               
@@ -162,8 +162,8 @@ public class Test {
 	               
 	               else if (answer==3){
 	            	   
-	            	   System.out.printf("Verfiy Yourself as Admin\n");
-	            	   System.out.printf("Please Enter UserId\n");
+	            	   System.out.printf("Verfiy Yourself as Admin : ");
+	            	   System.out.printf("Please Enter UserId : ");
 	            	   
 	            	   String userId= scan.nextLine();
 	            	   int val;
@@ -206,7 +206,6 @@ public class Test {
 	}
 	public static void main(String[] args) {
 	
-		System.out.printf("Welcome to Lock-N-Loaded !");
 	    frontPage();
 	    System.out.printf("Rock 'N Roll Baby\n");
 	    
