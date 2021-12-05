@@ -355,7 +355,7 @@ public class User {
 		                   
 		            	  
 		                   input = sc.nextLine();
-		                   
+		                   System.out.printf("\n");
 		                   //Query the DB
 		                   String sql = "SELECT * FROM model WHERE LOWER(Gunmodel) LIKE LOWER('%" + input + "%')";
 		                   ResultSet rs = stmt.executeQuery(sql);
