@@ -313,10 +313,10 @@ public class Adminpage {
 		                   String Details = "";
 		                   Integer Price = 0;
 		                   Integer Avail = 0;
-		 		    	   System.out.printf("Enter Model No : ");
+		 		    	   System.out.printf("Enter Firearm Model : ");
 		 		    	   Model = scan.nextLine();
 		 		    	  
-		 		    	   System.out.printf("Enter Details : ");
+		 		    	   System.out.printf("Enter Firearm Details : ");
 		 		    	   Details = scan.nextLine();
 		 		    	  
 		 		    	   System.out.printf("Enter Price : ");
