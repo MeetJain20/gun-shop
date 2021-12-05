@@ -7,33 +7,16 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Login {
-
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	static final String DB_URL = "jdbc:mysql://Localhost:3306/test";
-	static final String USER = "Username";
-	static final String PASS = "password";
-
-	public void log(Scanner scan){
+		public void log(Scanner scan){
 		Connection conn = null;
 		Statement stmt = null;
 		try{
-		      //STEP 1: Register JDBC driver
-		      Class.forName(JDBC_DRIVER);
-
-		      //STEP 2: Open a connection
-		      System.out.println("Connecting to a selected database...");
-		      conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		      System.out.println("Connected database successfully...");
-		      
-		      //STEP 3: Execute a query
-		      System.out.println("Creating statement...");
+		      Class.forName("com.mysql.jdbc.Driver");
+		      conn = DriverManager.getConnection("jdbc:mysql://Localhost:3306/Gunshop", "root", "dbms");
 		      stmt = conn.createStatement();
-		      
-		      System.out.println("Login Page");
-		      
+		      System.out.println("\t\t\t\t\tLOGIN PAGE");
 		      try  {
-		    	  
-		    	  System.out.println("Enter User ID");
+		    	  System.out.println("ENTER YOUR ID -");
 		    	  String input = scan.nextLine();
 		    	  int idv=0;
 	              try{
@@ -41,68 +24,57 @@ public class Login {
 	               }
 	              catch(Exception e)
 	               {
-	            	   System.out.println("UserId is Integer");
+	            	   System.out.println("ENTER CORRECT ID");
 	               }
-	              System.out.println("Enter Password");
+	              System.out.println("ENTER YOUR PASSWORD -");
 		    	  String Password = scan.nextLine();
 		    	  
 		    	  String sql = "SELECT Pass FROM user where Id="+idv+"";
 		    	  try (ResultSet rs = stmt.executeQuery(sql)) {
                       
                       while(rs.next()){
-                          //Retrieve by column name
-                          String title = rs.getString("Pass");
+                         String title = rs.getString("Pass");
                           System.out.println(title);
-                          //Display values
                           if (title.equals(Password))
                           {
-                        	  System.out.println("Successful Login and redirecting to details page");
+                        	  System.out.println("\t\t\tLOGIN SUCCESSFUL !!!!\n\t\t\tWELCOME");
                         	  User U =new User();
                         	  U.fun(scan, idv);
                           }
                           else
                           {
-                        	  System.out.println("INcorrect Password");
+                        	  System.out.println("INCORRECT PASSWORD");
                           }
-                        
                       }
-                      
-                      //Close the result set
                       rs.close();
                   }
                   catch(Exception e) {
                        e.printStackTrace();
                        System.out.println("Error! Invalid Username");
                   }
-		    	  
 		      }
 		      catch (Exception e)
 		      {
 		    	  System.out.println(e);
 		      }
-		      
 		}
 		catch(SQLException | ClassNotFoundException e)
 		{
 			e.printStackTrace();
 		}
 		finally{
-		      //finally block used to close resources
 		      try{
 		         if(stmt!=null)
 		            conn.close();
 		      }catch(SQLException se){
-		      }// do nothing
+		      }
 		      try{
 		         if(conn!=null)
 		            conn.close();
 		      }catch(SQLException se){
 		         se.printStackTrace();
-		         
-		         //Inform user of error
 		         System.out.println("Error closing connection to the database!");
-		      }//end finally try
-		   }//end try
-
+		      }
+		   }
 	}
 }
