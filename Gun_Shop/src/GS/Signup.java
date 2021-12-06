@@ -38,7 +38,7 @@ public class Signup {
 		    	  String sql = "INSERT INTO user(password,name,email,phoneNo) VALUES ('" + password + "', " + "'" + name + "', " + "'" + email + "', "+"'" + phnnum +"');";
 		    	  stmt.execute(sql);
 		    	 
-		    	  System.out.printf("ACCOUNT ADDED SUCCESSFULLY ADDED !!!\n\n");
+		    	  System.out.printf("ACCOUNT ADDED SUCCESSFULLY !!!\n\n");
 		    	  sql = "Select custid From user order by custid desc limit 0,1;";
 //		    	  password = '"+ password +"'
 		    	  try (ResultSet rs = stmt.executeQuery(sql)) {
