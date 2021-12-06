@@ -88,7 +88,7 @@ public class Test {
 		  { 
 		   case 1: 
 		      { 
-		       System.out.printf("Help\n"); 
+		       System.out.printf("Help\nThe user should enter 2 arguments -\n1) path of csv file\n 2)user should enter 'm' - model , 'u' - user , 'l' - logbook for entering the data to  tables  .");
 		       break; 
 		      } 
 		   case 2: 
