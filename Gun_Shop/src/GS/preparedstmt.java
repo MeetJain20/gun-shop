@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 
 public abstract class preparedstmt {
-    public final Connection pstmt(){
+    public final static Connection pstmt(){
         try {
             return DriverManager.getConnection("jdbc:mysql://Localhost:3306/firearms", "root", "1432001");
         } catch (SQLException e) {
