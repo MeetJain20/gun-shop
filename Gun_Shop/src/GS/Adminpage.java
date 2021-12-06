@@ -1,3 +1,4 @@
+
 package GS;
 
 import java.sql.Connection;
@@ -44,8 +45,9 @@ public class Adminpage {
 		               System.out.printf("2. Update Price\n");
 		               System.out.printf("3. Update Availablity\n");
 		               System.out.printf("4. Delete Model\n");
-					   System.out.printf("5. Search Customer by Customer ID\n");
-		               System.out.printf("6. Logout\n");
+					   System.out.printf("5. Print All Customer Details\n");
+					   System.out.printf("6. Search Customer by Customer ID\n");
+		               System.out.printf("7. Logout\n");
 		               System.out.printf("\n\n- - - -╾━╤デ╦︻ *************************** ︻╦デ╤━╾- - - -\n\n");
 		               
 		               System.out.printf("Enter Your Choice : ");
@@ -58,11 +60,11 @@ public class Adminpage {
 		               {
 		            	   answer=-1;
 		               }
-		               if(answer == -1 || answer < 1 || answer > 6)
+		               if(answer == -1 || answer < 1 || answer > 7)
 		               {
 		                   //User entered incorrect input
 		                   System.out.printf("Incorrect Input !!!\n");
-		                   System.out.printf("Please enter a number from 1-6 !!!\n");
+		                   System.out.printf("Please enter a number from 1-7 !!!\n");
 		               }
 		               
 		               else if (answer==1)
@@ -178,7 +180,41 @@ public class Adminpage {
 	                       System.out.println("The Firearm Model is deleted !!!\n");
 				    	   
 		               }
-		               else if(answer==5)
+
+					   else if(answer==5)
+					   {
+						System.out.println("User Present Are : \n");
+						String mee = "Select * from user";
+						try (ResultSet rs = stmt.executeQuery(mee)) {
+							boolean mt = true;
+							 while(rs.next()){
+								 mt = false;
+								 String CustID = rs.getString("custid");
+								 System.out.println(CustID);
+								 String CustName = rs.getString("name");
+								 System.out.println(CustName);
+								 String CustEmail = rs.getString("email");
+								 System.out.println(CustEmail);
+								 String CustPhone = rs.getString("phoneNo");
+								 System.out.println(CustPhone);
+								 System.out.printf("\n\n");
+							 }
+							 if(mt) 
+							 {
+								 System.out.println("No User present with Given Customer Id !!!\n");
+							 }
+							 
+							 //Close the result set
+							 rs.close();
+						 }
+						 catch(Exception e) {
+							  e.printStackTrace();
+							  System.out.printf("Error! Could Not get result from the Database !!!\n");
+						 }
+						
+					   }
+
+		               else if(answer==6)
 					   {
 						   int Cust_id=0;
 						   System.out.printf("Enter Customer ID : ");
@@ -219,7 +255,7 @@ public class Adminpage {
 							 }
 	                        
 					   }
-		               else if (answer==6)
+		               else if (answer==7)
 		               {
 		            	   
 		            	   querying= false;
@@ -261,4 +297,3 @@ public class Adminpage {
 	}
 
 }
-
