@@ -152,7 +152,7 @@ public class Adminpage extends preparedstmt {
 
 						System.out.println("Enter Firearm Model : ");
 						Model = scan.nextLine();
-						String sqlDel = "DELETE FROM model WHERE LOWER(Title) LIKE LOWER('%" + Model + "%')";
+						String sqlDel = "DELETE FROM model WHERE LOWER(Gunmodel) LIKE LOWER('%" + Model + "%')";
 
 						// Execute the sql
 						stmt.execute(sqlDel);
