@@ -1,4 +1,3 @@
-# OOPS MINI PROJECT
 Command Line Application for Gun Shop
 
 It is a CLI project in which there are two aspects, one is user and another is admin.
@@ -18,15 +17,4 @@ Java and JDBC Environment setup, Mysql.
 
 Run the Test.java file. 
 
- 
-TEAM LEADER 
-​MEET JAIN​   S20200010126​
-
-
-TEAM MEMBERS 
-
-ANAND THAKUR​​   S20200010016​
-NEHUL SINGH​​    S20200010144​
-​SAURABH KUMAR​  S20200010190​
-​JAYANTH KORRA​  S20200010101​
 
